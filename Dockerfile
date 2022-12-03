@@ -18,5 +18,5 @@ RUN mkdir -p /app/target/release && \
     mv /app/target/$(cat /.platform)/release/healthchecker /app/target/release/healthchecker
 
 FROM --platform=$BUILDPLATFORM gcr.io/distroless/cc-debian11:nonroot
-COPY --from=build-env /app/target/release/healthchecker /
-ENTRYPOINT ["./healthchecker"]
+COPY --from=build-env /app/target/release/healthchecker /usr/local/bin/
+ENTRYPOINT ["/usr/local/bin/healthchecker"]

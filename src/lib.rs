@@ -16,7 +16,7 @@ pub async fn health_check(
         if status_code != StatusCode::from_u16(http_code).unwrap() {
             return Err(());
         }
-        return Ok(())
+        return Ok(());
     })
     .map_err(|e| return e)
     .ok();

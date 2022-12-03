@@ -1,8 +1,14 @@
 [package]
 name = "healthchecker"
+description = "Minimal health checker for distroless images"
 version = "0.1.0"
 authors = ["Bruno Palermo <b@palermo.dev>"]
+documentation = ""
+repository = "https://github.com/bpalermo/healthchecker"
+readme = "README.md"
+license = "unlicensed"
 edition = "2021"
+keywords = ["distroless", "health", "check"]
 
 [[bin]]
 name = "healthchecker"
