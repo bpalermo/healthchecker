@@ -1,6 +1,5 @@
 # syntax=docker/dockerfile:1
-ARG RUST_VERSION=1.65
-FROM --platform=$BUILDPLATFORM rust:${RUST_VERSION} as build-env
+FROM --platform=$BUILDPLATFORM rust:1.65 as build-env
 ARG TARGETARCH
 COPY tools/platform.sh /
 WORKDIR /app
@@ -18,6 +17,6 @@ RUN --mount=type=cache,target=/root/.cargo \
 RUN mkdir -p /app/target/release && \
     mv /app/target/$(cat /.platform)/release/healthchecker /app/target/release/healthchecker
 
-FROM --platform=$BUILDPLATFORM gcr.io/distroless/cc
+FROM --platform=$BUILDPLATFORM gcr.io/distroless/cc-debian11:nonroot
 COPY --from=build-env /app/target/release/healthchecker /
 ENTRYPOINT ["./healthchecker"]
