@@ -22,11 +22,7 @@ struct Arguments {
 async fn main() -> ! {
     let args = Arguments::parse();
     match healthchecker::health_check(args.host, args.port, args.path, args.http_code).await {
-        Ok(_) => {
-            exit(0)
-        },
-        Err(_) => {
-            exit(1)
-        }
+        Ok(_) => exit(0),
+        Err(_) => exit(1),
     }
 }
