@@ -1,0 +1,22 @@
+[package]
+name = "healthchecker"
+version = "0.1.0"
+authors = ["Bruno Palermo <b@palermo.dev>"]
+edition = "2021"
+
+[[bin]]
+name = "healthchecker"
+path = "src/main.rs"
+
+[lib]
+name = "healthchecker"
+path = "src/lib.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"]}
+hyper = { version = "0.14", features = ["full"] }
+tokio = { version = "1", features = ["full"] }
+
+[profile.release]
+opt-level = "z"
+lto = true
